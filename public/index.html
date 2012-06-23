@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>
     </title>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css"/>
+    <link rel="stylesheet" href="jquery.mobile-1.1.0.min.css"/>
     <link rel="stylesheet" href="my.css"/>
     <style>
             /* App custom styles */
     </style>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+    <script src="jquery-1.7.1.min.js">
     </script>
-    <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js">
+    <script src="jquery.mobile-1.1.0.min.js">
     </script>
     <script src="my.js">
     </script>
@@ -41,19 +41,28 @@
         </div>
     </div>
     <div data-role="content" style="padding: 15px">
-
-
-        <div data-role="fieldcontain">
-
-                <fieldset data-role="controlgroup" data-mini="true">
+        <div>
+            <table>
+                <tr>
                     <label for="item1">
                         Should I Buy This?
                     </label>
-                    <input id="item1" name='item1' placeholder="Search or enter item1's  url" type="text"/>
-                    <button type="submit" data-theme="b" id="item1SearchBtn">Submit</button>
-                    <ul id="item1list" data-role="listview"></ul>
-                </fieldset>
+                </tr>
+                <tr>
+                    <td width='75%'>
+                        <input id="item1" name='item1' placeholder="Search or enter item1's  url" type="text"/>
+                    </td>
+                    <td width='25%'>
+                        <button type="submit"  id="item1SearchBtn" > Search </button>
+                    </td>
+                </tr>
+
+            </table>
         </div>
+
+        <div data-role="content" style="padding: 15px">
+        <ul id="item1list" data-role="listview"></ul>
+         </div>
         <a data-role="button" data-inline="true" data-transition="fade" href="#page1" data-icon="search"
            data-iconpos="left">
             Go
