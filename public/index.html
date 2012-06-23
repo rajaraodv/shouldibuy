@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>
+    </title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css"/>
+    <link rel="stylesheet" href="my.css"/>
+    <style>
+            /* App custom styles */
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+    </script>
+    <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js">
+    </script>
+    <script src="my.js">
+    </script>
+</head>
+<body>
+<!-- Home -->
+<div data-role="page" id="page1">
+    <div data-theme="a" data-role="header">
+        <h3>
+            Should I Buy?
+        </h3>
+
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li>
+                    <a href="#page1" data-theme="" data-icon="">
+                        Answer
+                    </a>
+                </li>
+                <li>
+                    <a href="#page1" data-theme="" data-icon="">
+                        Ask
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="content" style="padding: 15px">
+
+
+        <div data-role="fieldcontain">
+
+                <fieldset data-role="controlgroup" data-mini="true">
+                    <label for="item1">
+                        Should I Buy This?
+                    </label>
+                    <input id="item1" name='item1' placeholder="Search or enter item1's  url" type="text"/>
+                    <button type="submit" data-theme="b" id="item1SearchBtn">Submit</button>
+                    <ul id="item1list" data-role="listview"></ul>
+                </fieldset>
+        </div>
+        <a data-role="button" data-inline="true" data-transition="fade" href="#page1" data-icon="search"
+           data-iconpos="left">
+            Go
+        </a>
+
+        <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup">
+                <label for="textinput2">
+                    Or, Should I Buy This? (optional)
+                </label>
+                <input id="textinput2" placeholder="Search or Enter item2's url" value="" type="text"/>
+            </fieldset>
+        </div>
+        <a data-role="button" data-transition="fade" href="#page1" data-icon="search" data-iconpos="left">
+            Search Item 2
+        </a>
+        <h5>
+            Ask anonymously &amp; get answers in minutes!
+        </h5>
+        <a data-role="button" data-transition="fade" data-theme="a" href="#page1">
+            Ask
+        </a>
+    </div>
+</div>
+<script>
+    //App custom javascript
+</script>
+</body>
+</html>
