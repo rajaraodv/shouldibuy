@@ -40,6 +40,37 @@ exports.addQuestion = function (body, callback) {
         });
 };
 
+exports.addVote = function (body, callback) {
+    mongoConnection.collection('questions',
+        function (err, coll) {
+            if (err) {
+                callback(err);
+                return;
+            }
+            debugger;
+            coll.findOne({"_id":id}, function (err, obj) {
+                if (obj) {
+                    callback(null, obj);
+                    return;
+                }
+
+                coll.insert(body, {
+                        safe:true
+                    },
+                    function (err) {
+                        if (err) {
+                            callback(err);
+                            return;
+                        }
+                        callback(null, body);
+                    });
+            });
+
+        });
+};
+
+
+
 exports.getQuestions =  function(callback) {
     mongoConnection.collection('questions',
         function(err, coll) {

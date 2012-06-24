@@ -7,9 +7,6 @@
     </title>
     <link rel="stylesheet" href="jquery.mobile-1.1.0.min.css"/>
     <link rel="stylesheet" href="my.css"/>
-    <style>
-            /* App custom styles */
-    </style>
     <script src="jquery-1.7.1.min.js">
     </script>
     <script src="jquery.mobile-1.1.0.min.js">
@@ -18,7 +15,6 @@
     </script>
 </head>
 <body>
-<!-- Home -->
 <div data-role="page" data-theme="a" id="page1">
     <div data-theme="a" data-role="header">
         <h3>
@@ -78,90 +74,58 @@
             </ul>
         </div>
     </div>
-    <div data-role="content">
-        <div data-role="collapsible-set">
 
-            <div data-theme="a" data-content-theme="a" data-role="collapsible" data-collapsed="false">
-                <h3>Should I Buy This?</h3>
+    <h3>Should I Buy This?</h3>
 
-                <div>
-                    <table>
-                        <tr>
-                            <td width='75%'>
-                                <input id="item1" name='item1' placeholder="Search or enter item1's  url" type="text"/>
-                            </td>
-                            <td width='25%'>
-                                <button type="submit" id="item1SearchBtn"> Search</button>
-                            </td>
-                        </tr>
+    <div>
+        <table width='100%'>
+            <tr>
+                <td width='75%'>
+                    <input id="item1" name='item1' placeholder="Search or enter item1's  url" type="text"/>
+                </td>
+                <td width='25%'>
+                    <button type="submit" id="item1SearchBtn"> Search</button>
+                </td>
+            </tr>
 
-                    </table>
-                </div>
+        </table>
 
-                <div data-role="content">
-                    <div data-role="fieldcontain">
-                        <fieldset id="page2radio1list" data-role="controlgroup">
-                        </fieldset>
-                    </div>
-                </div>
-            </div>
-            <div data-theme="a" data-content-theme="a" data-role="collapsible" data-collapsed="false">
-                <h3>Or, Should I Buy This? (optional)</h3>
-
-                <div>
-                    <table>
-                        <tr>
-                            <td width='75%'>
-                                <input id="item2" name='item1' placeholder="Search or enter item2's  url" type="text"/>
-                            </td>
-                            <td width='25%'>
-                                <button type="submit" id="item2SearchBtn"> Search</button>
-                            </td>
-                        </tr>
-
-                    </table>
-                </div>
-
-                <div data-role="content">
-                    <div data-role="fieldcontain">
-                        <fieldset id="page2radio2list" data-role="controlgroup">
-                        </fieldset>
-                    </div>
-                </div>
-            </div>
-            <div data-theme="a" data-content-theme="a" data-role="collapsible" data-collapsed="true">
-                <h3>Or, Should I Buy This? (3rd item)</h3>
-
-                <div>
-                    <table>
-                        <tr>
-                            <td width='75%'>
-                                <input id="item3" name='item1' placeholder="Search or enter item3's  url" type="text"/>
-                            </td>
-                            <td width='25%'>
-                                <button type="submit" id="item3SearchBtn"> Search</button>
-                            </td>
-                        </tr>
-
-                    </table>
-                </div>
-
-                <div data-role="content">
-                    <div data-role="fieldcontain">
-                        <fieldset id="page2radio3list" data-role="controlgroup">
-                        </fieldset>
-                    </div>
-                </div>
-            </div>
+        <div data-role="fieldcontain">
+            <fieldset id="page2radio1list" data-role="controlgroup">
+            </fieldset>
         </div>
-        <br><br>
-        <label style='font-size:20px;color:gray;font-weight: bold;'>
-            Ask anonymously &amp; get answers in minutes!
-        </label>
-        <button data-role="button" id="ask" data-theme="b">
-            Ask
-        </button>
     </div>
+    <h3>Or, Should I Buy This? (optional)</h3>
+
+    <div>
+        <table width='100%'>
+            <tr>
+                <td width='75%'>
+                    <input id="item2" name='item1' placeholder="Search or enter item2's  url" type="text"/>
+                </td>
+                <td width='25%'>
+                    <button type="submit" id="item2SearchBtn"> Search</button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div data-role="content">
+        <div data-role="fieldcontain">
+            <fieldset id="page2radio2list" data-role="controlgroup">
+            </fieldset>
+        </div>
+    </div>
+
+
+    <button data-role="button" id="ask" data-theme="b">
+        Ask
+    </button>
+    <label style='font-size:14px;color:gray;font-weight: bold;'>
+        Ask anonymously &amp; get answers in minutes!
+    </label>
+</div>
 </div>
 <div data-role="page" data-theme="a" id="page3">
     <div data-theme="a" data-role="header">
@@ -191,8 +155,5 @@
     </div>
     Settings page
 </div>
-<script>
-    //App custom javascript
-</script>
 </body>
 </html>

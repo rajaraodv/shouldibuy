@@ -55,18 +55,25 @@ app.get('/search', function (req, res) {
 });
 
 app.post('/addQuestion', function(req, res){
-    console.log(1);
     mongoLib.addQuestion(req.body, function(err, storedJson) {
-            console.log(2);
             if(err) {
-                console.log(3);
                 res.end({"error" : err});
             } else {
-                console.log(4);
                 res.end(JSON.stringify(storedJson));
             }
         }
-    )
+    );
+});
+
+app.post('/addVote', function(req, res){
+    mongoLib.addQuestion(req.body, function(err, storedJson) {
+            if(err) {
+                res.end({"error" : err});
+            } else {
+                res.end(JSON.stringify(storedJson));
+            }
+        }
+    );
 });
 
 app.get('/getQuestions', function(req, res) {
