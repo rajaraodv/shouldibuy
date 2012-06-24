@@ -39,59 +39,130 @@
 
     $("#item1SearchBtn").live('click', function (e) {
         /*
-        $.ajax({
-            url:'/search?item1=' + $('#item1').val(),
-            type:'GET',
-            dataType:'json',
-            error:function () {
-                alert("error");
-            },
-            success:function (data) {
-                alert(JSON.stringify(data));
-            }
-        });*/
+         $.ajax({
+         url:'/search?item1=' + $('#item1').val(),
+         type:'GET',
+         dataType:'json',
+         error:function () {
+         alert("error");
+         },
+         success:function (results) {
+         createList(results, 1);
+         alert(JSON.stringify(results));
+         }
+         });
+         */
 
-            var list = "",
-            items = [{name: "Item A", url: "/#item-a"},
-                {name: "Item B", url: "/#item-b"},
-                {name: "Item C", url: "/#item-c"}];
-        items = results.items;
+        createList(results, 1);
 
-        $.each( items, function( i, item ) {
-            debugger;
-            var id = 'list_1_item_'+ i;
+    });
+
+    $("#item2SearchBtn").live('click', function (e) {
+        /*
+         $.ajax({
+         url:'/search?item1=' + $('#item1').val(),
+         type:'GET',
+         dataType:'json',
+         error:function () {
+         alert("error");
+         },
+         success:function (results) {
+         createList(results, 2);
+         alert(JSON.stringify(results));
+         }
+         });
+         */
+
+        createList(results, 2);
+
+    });
+
+    function createList(results, listNumber) {
+        var items = results.items;
+        var list = "";
+        $.each(items, function (i, item) {
+            var id = item.ASIN;
             var checked = "checked";
-           // list += '<li>';
-           // list += '<a href="' + item.DetailPageURL + '">';
-          //  list += '<p>';
-            if(i != 0) {
+            // list += '<li>';
+            // list += '<a href="' + item.DetailPageURL + '">';
+            //  list += '<p>';
+            if (i != 0) {
                 checked = "";
             }
-            list += '<input type="radio" ' + checked + ' name="radio-choice-1" id='+ id  +' value='+ id  +'  />';
-            list +=  '<label for='+id +' >';
-          //  list += '</p>';
+            list += '<input type="radio" ' + checked + ' name="radio-item-' + listNumber + '" id=' + id + ' value=' + id + '  />';
+            list += '<label for=' + id + ' >';
+            //  list += '</p>';
             list += '<table><tr>';
-            list += '<td><img  src="'+ item.SmallImage.URL +'"></img></td>';
+            list += '<td><img  src="' + item.MediumImage.URL + '"></img></td>';
 
             list += '<td valign="top" style="text-align:top">';
-            list +=  '<h3>' +item.ItemAttributes.Title + '</h3>';
-            list +=  '<p>Brand - ' +item.ItemAttributes.Brand + '</p>';
+            list += '<h4>' + item.ItemAttributes.Title + '</h4>';
+            list += '<p>Brand - ' + item.ItemAttributes.Brand + '</p>';
 
-            list +=  '<p style="color:red">' +item.OfferSummary.LowestNewPrice.FormattedPrice + '</p>';
+            list += '<p style="color:red">' + item.OfferSummary.LowestNewPrice.FormattedPrice + '</p>';
             list += '</td>';
             list += '</tr></table>';
             list += '</label>';
 
-           // list += '</a>';
-          //  list += '</li>';
+            // list += '</a>';
+            //  list += '</li>';
         });
-       // $('#item1list').empty();
-       // $('#item1list').append(list).listview('refresh');
-        $('#radio1list').append(list).controlgroup('refresh');
-        $('#radio1list').trigger('create');
+        // $('#item1list').empty();
+        // $('#item1list').append(list).listview('refresh');
+        var radioId = '#radio' + listNumber + 'list';
+        $(radioId).empty();
+        $(radioId).append(list).controlgroup('refresh');
+        $(radioId).trigger('create');
+    }
+
+
+    $('#ask').live('click', function () {
+        var radio_val = $('input[name=radio-item-1]:checked').val();
+        var items = results.items;
+        for (var i in items) {
+            var item = items[i];
+            if (item.ASIN == radio_val) {
+                break;
+            }
+        }
+        var questionJson = {
+            "owner":"user1",
+            "created_at":(new Date()).getTime(),
+            "updated_at":(new Date()).getTime(),
+            "item1":{
+                "img":item.MediumImage.URL,
+                "ASIN":item.ASIN,
+                "title":item.ItemAttributes.Title,
+                "url":item.DetailPageURL,
+                "yesCnt":0,
+                "noCnt":0
+            },
+            "item2":{},
+            "item3":{},
+            "item1YesCnt":0,
+            "item2YesCnt":0,
+            "item3YesCnt":0,
+            "item1NoCnt":0,
+            "item2NoCnt":0,
+            "item3NoCnt":0,
+            "noOfItems":1,
+            "comments":[
+                {"user":"user1", comment:"from user1"},
+                {"user":"user2", comment:"from user2"}
+            ],
+            "commentsCnt":2
+        };
+
+
+        var user = "user" + (new Date()).getTime() % 100000;
+        $.post('/addQuestion', questionJson, function (data) {
+            alert(1);
+        }, 'json');
     });
 
+
 })(jQuery);
+
 
 var results = {"items":[
     {"ASIN":"059035342X", "DetailPageURL":"http://www.amazon.com/Harry-Potter-Sorcerers-Stone-Book/dp/059035342X%3FSubscriptionId%3DAKIAIWH4I4MAW6HWNUYA%26tag%3Dwwwshouldibuy-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D059035342X", "ItemLinks":{"ItemLink":[

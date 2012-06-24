@@ -1,14 +1,14 @@
 var express = require('express');
 var app = express.createServer();
 var util = require('util');
-var  OperationHelper = require('apac').OperationHelper;
+var OperationHelper = require('apac').OperationHelper;
+var mongoLib = require('./mongoLib.js');
 
 var opHelper = new OperationHelper({
-    awsId:     'AKIAIWH4I4MAW6HWNUYA',
-    awsSecret: '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',
-    assocId:   'wwwshouldibuy-20'
+    awsId:'AKIAIWH4I4MAW6HWNUYA',
+    awsSecret:'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',
+    assocId:'wwwshouldibuy-20'
 });
-
 
 
 app.configure(function () {
@@ -28,27 +28,45 @@ app.configure('production', function () {
 });
 
 app.get('/', function (req, res) {
+    //debugger;
+    //console.log("11111");
+    //console.log(mongoLib.mongoConnection);
     res.sendfile('index.html');
 });
 
-app.get('/search', function(req, res){
+app.get('/search', function (req, res) {
     opHelper.execute('ItemSearch', {
-        'SearchIndex': 'Books',
-        'Keywords': 'harry potter',
-        'ResponseGroup': 'Images,ItemAttributes,Offers'
-    }, function(error, results) {
+        'SearchIndex':'All',
+        'Keywords':req.query.item1,
+        'ResponseGroup':'Images,ItemAttributes,Offers'
+    }, function (error, results) {
         if (error) {
             console.log('Error: ' + error + "\n");
-            res.send({"error": "There was a error connecting to Amazon"})
+            res.send({"error":"There was a error connecting to Amazon"})
         }
-        var items = results.Items ? results.Items.Item : [];
-        if (items && items.length > 5) {
-            items = items.splice(0, 4);
+        console.log("got response from amzn");
+        var items = results.Items && results.Items.Item ? results.Items.Item : [];
+        console.log(items);
+        if (items && items.length > 3) {
+            items = items.splice(0, 3);
         }
-        res.send({"items" : items});
+        res.send({"items":items});
     });
+});
 
-
+app.post('/addQuestion', function(req, res){
+    console.log(1);
+    mongoLib.addQuestion(req.body, function(err, storedJson) {
+            console.log(2);
+            if(err) {
+                console.log(3);
+                res.end({"error" : err});
+            } else {
+                console.log(4);
+                res.end(JSON.stringify(storedJson));
+            }
+        }
+    )
 });
 
 app.listen(3000);

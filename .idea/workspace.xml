@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff32be57-e6cc-429e-93a9-c61ae4b3ca97" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mongoLib.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/my.css" afterPath="$PROJECT_DIR$/public/my.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/my.js" afterPath="$PROJECT_DIR$/public/my.js" />
     </list>
     <ignored path="shouldibuy.iws" />
@@ -65,16 +67,25 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="26" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0">
+            <state line="19" column="32" selection-start="541" selection-end="541" vertical-scroll-proportion="-9.192307">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="mongoLib.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mongoLib.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="16" selection-start="924" selection-end="924" vertical-scroll-proportion="0.4827586">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="22" selection-start="4220" selection-end="4220" vertical-scroll-proportion="0.6381579">
+            <state line="65" column="26" selection-start="2039" selection-end="2039" vertical-scroll-proportion="-6.94">
               <folding />
             </state>
           </provider>
@@ -83,7 +94,7 @@
       <file leaf-file-name="my.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/my.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="31" selection-start="2522" selection-end="2522" vertical-scroll-proportion="0.0">
+            <state line="127" column="0" selection-start="4337" selection-end="4337" vertical-scroll-proportion="-6.1538463">
               <folding />
             </state>
           </provider>
@@ -121,10 +132,11 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/my.css" />
-        <option value="$PROJECT_DIR$/public/my.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/public/my.js" />
+        <option value="$PROJECT_DIR$/mongoLib.js" />
       </list>
     </option>
   </component>
@@ -373,13 +385,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="26" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/my.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="20" selection-start="314" selection-end="314" vertical-scroll-proportion="-7.5">
@@ -387,16 +392,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/my.js">
+    <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="31" selection-start="2522" selection-end="2522" vertical-scroll-proportion="0.0">
+        <state line="65" column="26" selection-start="2039" selection-end="2039" vertical-scroll-proportion="-6.94">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
+    <entry file="file://$PROJECT_DIR$/public/my.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="22" selection-start="4220" selection-end="4220" vertical-scroll-proportion="0.6381579">
+        <state line="127" column="0" selection-start="4337" selection-end="4337" vertical-scroll-proportion="-6.1538463">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="32" selection-start="541" selection-end="541" vertical-scroll-proportion="-9.192307">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mongoLib.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="16" selection-start="924" selection-end="924" vertical-scroll-proportion="0.4827586">
           <folding />
         </state>
       </provider>

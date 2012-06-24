@@ -19,7 +19,7 @@
 </head>
 <body>
 <!-- Home -->
-<div data-role="page" id="page1">
+<div data-role="page" data-theme="a" id="page1">
     <div data-theme="a" data-role="header">
         <h3>
             Should I Buy?
@@ -116,28 +116,13 @@
                 </div>
             </div>
         </div>
-
-        <a data-role="button" data-inline="true" data-transition="fade" href="#page1" data-icon="search"
-           data-iconpos="left">
-            Go
-        </a>
-
-        <div data-role="fieldcontain">
-            <label for="textinput2">
-                Or, Should I Buy This? (optional)
-            </label>
-            <input id="textinput2" placeholder="Search or Enter item2's url" value="" type="text"/>
-            </fieldset>
-        </div>
-        <a data-role="button" data-transition="fade" href="#page1" data-icon="search" data-iconpos="left">
-            Search Item 2
-        </a>
-        <h5>
+         <br><br>
+        <label style='font-size:20px;color:gray;font-weight: bold;'>
             Ask anonymously &amp; get answers in minutes!
-        </h5>
-        <a data-role="button" data-transition="fade" data-theme="a" href="#page1">
+        </label>
+        <button data-role="button" id="ask"  data-theme="b" >
             Ask
-        </a>
+        </button>
     </div>
 </div>
 <script>
