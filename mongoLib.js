@@ -12,17 +12,14 @@ mongodb.connect("mongodb://localhost:27017/shouldibuy", function (err, connectio
 
 
 exports.addQuestion = function (body, callback) {
-    debugger;
-
     mongoConnection.collection('questions',
         function (err, coll) {
             if (err) {
                 callback(err);
                 return;
             }
-
-            coll.findOne({"item1.ASIN": body.item1.ASIN}, function (err, obj) {
-                debugger;
+            debugger;
+            coll.findOne({"item1.ASIN":body.item1.ASIN}, function (err, obj) {
                 if (obj) {
                     callback(null, obj);
                     return;
@@ -41,5 +38,22 @@ exports.addQuestion = function (body, callback) {
             });
 
         });
-
 };
+
+exports.getQuestions =  function(callback) {
+    mongoConnection.collection('questions',
+        function(err, coll) {
+            if (err) {
+                callback(err);
+                return;
+            }
+            coll.find({},
+                {
+                    limit: 10,
+                    sort: [['_id', 'desc']]
+                },
+                function(err, cursor) {
+                    cursor.toArray(callback);
+                });
+        });
+}

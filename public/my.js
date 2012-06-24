@@ -1,4 +1,5 @@
 (function ($) {
+    var page1Initialized = false;
     $.widget('mobile.tabbar', $.mobile.navbar, {
         _create:function () {
             // Set the theme before we call the prototype, which will
@@ -35,6 +36,10 @@
         if (tabBar.length) {
             tabBar.tabbar('setActive', '#' + id);
         }
+        if (!page1Initialized && id == "page1") {
+            page1Initialized = true;
+            getQuestions();
+        }
     });
 
     $("#item1SearchBtn").live('click', function (e) {
@@ -47,13 +52,13 @@
          alert("error");
          },
          success:function (results) {
-         createList(results, 1);
+         createList(results, 2, 1);
          alert(JSON.stringify(results));
          }
          });
          */
 
-        createList(results, 1);
+        createList(results, 2, 1);
 
     });
 
@@ -67,19 +72,22 @@
          alert("error");
          },
          success:function (results) {
-         createList(results, 2);
+         createList(results, 2, 2);
          alert(JSON.stringify(results));
          }
          });
          */
 
-        createList(results, 2);
+        createList(results, 2, 2);
 
     });
 
-    function createList(results, listNumber) {
+    function createList(results, pageNumber, listNumber) {
         var items = results.items;
         var list = "";
+        var radioName = "page" + pageNumber + "radio" + listNumber + "listName";
+        var radioId = "#page" + pageNumber + "radio" + listNumber + "list";
+
         $.each(items, function (i, item) {
             var id = item.ASIN;
             var checked = "checked";
@@ -89,7 +97,7 @@
             if (i != 0) {
                 checked = "";
             }
-            list += '<input type="radio" ' + checked + ' name="radio-item-' + listNumber + '" id=' + id + ' value=' + id + '  />';
+            list += '<input type="radio" ' + checked + ' name=' + radioName + ' id=' + id + ' value=' + id + '  />';
             list += '<label for=' + id + ' >';
             //  list += '</p>';
             list += '<table><tr>';
@@ -99,7 +107,7 @@
             list += '<h4>' + item.ItemAttributes.Title + '</h4>';
             list += '<p>Brand - ' + item.ItemAttributes.Brand + '</p>';
 
-            list += '<p style="color:red">' + item.OfferSummary.LowestNewPrice.FormattedPrice + '</p>';
+            list += '<p style="color:yellow;">' + item.OfferSummary.LowestNewPrice.FormattedPrice + '</p>';
             list += '</td>';
             list += '</tr></table>';
             list += '</label>';
@@ -107,17 +115,97 @@
             // list += '</a>';
             //  list += '</li>';
         });
-        // $('#item1list').empty();
-        // $('#item1list').append(list).listview('refresh');
-        var radioId = '#radio' + listNumber + 'list';
+
         $(radioId).empty();
         $(radioId).append(list).controlgroup('refresh');
         $(radioId).trigger('create');
     }
 
+    function getQuestions() {
+        $.ajax({
+            url:'/getQuestions',
+            type:'GET',
+            dataType:'json',
+            error:function () {
+                alert("error");
+            },
+            success:function (questions) {
+                createQuestionList(questions);
+            }
+        });
+    }
+
+    function createQuestionList(questions) {
+        var list = "";
+
+        $.each(questions, function (i, question) {
+            list += "<li>";
+            var items = ["item1", "item2", "item3"];
+            var hasItem1 = question.item1 ? true : false;
+            var hasItem2 =  question.item2 ? true : false;
+            var hasItem3 =  question.item3 ? true : false;
+            for (var i = 0; i < items.length; i++) {
+                var item = question[items[i]];
+                if (!item) {
+                    continue;
+                }
+                list += "<div>";
+                list += '<h4>' + item.title + '</h4>';
+                    list += '<table><tr>';
+                list += '<td><img  src="' + item.img + '"></img></td>';
+
+                list += '<td valign="top" style="text-align:top">';
+
+                list += '<p>Brand - ' + item.brand + '</p>';
+
+                list += '<p style="color:yellow;">' + item.price + '</p>';
+                list += '</td>';
+                list += '</tr>';
+                list += '</table>';
+                list += "</div>";
+            }
+            list += "<div>";
+            if(hasItem1) {
+                list += '<p>Item1 Yes Count - ' + question.item1YesCnt + '</p>';
+            }
+            if(hasItem2) {
+                list += '<p>Item2 Yes Count - ' + question.item2YesCnt + '</p>';
+            }
+            if(hasItem3) {
+                list += '<p>Item3 Yes Count - ' + question.item3YesCnt + '</p>';
+            }
+            if(question.noOfItems == 1) {
+                list += '<button data-role="button" data-inline="true" data-theme="a">Hell Yeah!</button>';
+                list += '<button data-role="button" data-inline="true" data-theme="a">Hell No!</button>';
+            } else {
+                if(hasItem1) {
+                    list += '<button data-role="button" data-inline="true" data-theme="a">Item 1!</button>';
+                }
+                if(hasItem2) {
+                    list += '<button data-role="button" data-inline="true" data-theme="a">Item 2!</button>';
+                }
+                if(hasItem3) {
+                    list += '<button data-role="button" data-inline="true" data-theme="a">Item 3!</button>';
+                }
+            }
+            list += "</div>";
+
+            list += "</li>";
+
+            //  list += '</p>';
+
+
+            // list += '</a>';
+            //  list += '</li>';
+        });
+        $('#page1radio1list').append(list).listview('refresh');
+        $('#page1radio1list').trigger("create");
+    }
 
     $('#ask').live('click', function () {
-        var radio_val = $('input[name=radio-item-1]:checked').val();
+        var radioName = "page2radio1listName";
+
+        var radio_val = $('input[name=' + radioName + ']:checked').val();
         var items = results.items;
         for (var i in items) {
             var item = items[i];
@@ -131,9 +219,11 @@
             "updated_at":(new Date()).getTime(),
             "item1":{
                 "img":item.MediumImage.URL,
+                "brand":item.ItemAttributes.Brand,
                 "ASIN":item.ASIN,
                 "title":item.ItemAttributes.Title,
                 "url":item.DetailPageURL,
+                "price":item.OfferSummary.LowestNewPrice.FormattedPrice,
                 "yesCnt":0,
                 "noCnt":0
             },
@@ -159,8 +249,6 @@
             alert(1);
         }, 'json');
     });
-
-
 })(jQuery);
 
 

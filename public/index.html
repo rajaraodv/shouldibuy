@@ -28,13 +28,51 @@
         <div data-role="navbar" data-iconpos="top">
             <ul>
                 <li>
-                    <a href="#page1" data-theme="" data-icon="">
+                    <a href="#page1" data-theme="" data-icon="star" class="ui-btn-active ui-state-persist">
                         Answer
                     </a>
                 </li>
                 <li>
-                    <a href="#page1" data-theme="" data-icon="">
+                    <a href="#page2" data-theme="" data-icon="forward">
                         Ask
+                    </a>
+                </li>
+                <li>
+                    <a href="#page3" data-theme="" data-icon="gear">
+                        Settings
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+            <ul id="page1radio1list" data-role="listview">
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" data-theme="a" id="page2">
+    <div data-theme="a" data-role="header">
+        <h3>
+            Should I Buy?
+        </h3>
+
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li>
+                    <a href="#page1" data-theme="" data-icon="star">
+                        Answer
+                    </a>
+                </li>
+                <li>
+                    <a href="#page2" data-theme="" data-icon="forward" class="ui-btn-active ui-state-persist">
+                        Ask
+                    </a>
+                </li>
+                <li>
+                    <a href="#page3" data-theme="" data-icon="gear">
+                        Settings
                     </a>
                 </li>
             </ul>
@@ -62,7 +100,7 @@
 
                 <div data-role="content">
                     <div data-role="fieldcontain">
-                        <fieldset id="radio1list" data-role="controlgroup">
+                        <fieldset id="page2radio1list" data-role="controlgroup">
                         </fieldset>
                     </div>
                 </div>
@@ -86,7 +124,7 @@
 
                 <div data-role="content">
                     <div data-role="fieldcontain">
-                        <fieldset id="radio2list" data-role="controlgroup">
+                        <fieldset id="page2radio2list" data-role="controlgroup">
                         </fieldset>
                     </div>
                 </div>
@@ -110,20 +148,48 @@
 
                 <div data-role="content">
                     <div data-role="fieldcontain">
-                        <fieldset id="radio3list" data-role="controlgroup">
+                        <fieldset id="page2radio3list" data-role="controlgroup">
                         </fieldset>
                     </div>
                 </div>
             </div>
         </div>
-         <br><br>
+        <br><br>
         <label style='font-size:20px;color:gray;font-weight: bold;'>
             Ask anonymously &amp; get answers in minutes!
         </label>
-        <button data-role="button" id="ask"  data-theme="b" >
+        <button data-role="button" id="ask" data-theme="b">
             Ask
         </button>
     </div>
+</div>
+<div data-role="page" data-theme="a" id="page3">
+    <div data-theme="a" data-role="header">
+        <h3>
+            Should I Buy?
+        </h3>
+
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li>
+                    <a href="#page1" data-theme="" data-icon="star">
+                        Answer
+                    </a>
+                </li>
+                <li>
+                    <a href="#page2" data-theme="" data-icon="forward">
+                        Ask
+                    </a>
+                </li>
+                <li>
+                    <a href="#page3" data-theme="" data-icon="gear" class="ui-btn-active ui-state-persist">
+                        Settings
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    Settings page
 </div>
 <script>
     //App custom javascript

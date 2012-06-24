@@ -69,4 +69,15 @@ app.post('/addQuestion', function(req, res){
     )
 });
 
+app.get('/getQuestions', function(req, res) {
+    mongoLib.getQuestions(function(err, result) {
+            if(err) {
+                console.log(err);
+            } else {
+                res.end(JSON.stringify(result));
+            }
+        }
+    );
+});
+
 app.listen(3000);
