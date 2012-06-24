@@ -38,7 +38,6 @@
     });
 
     $("#item1SearchBtn").live('click', function (e) {
-         debugger;
         /*
         $.ajax({
             url:'/search?item1=' + $('#item1').val(),
@@ -56,13 +55,40 @@
             items = [{name: "Item A", url: "/#item-a"},
                 {name: "Item B", url: "/#item-b"},
                 {name: "Item C", url: "/#item-c"}];
+        items = results.items;
 
         $.each( items, function( i, item ) {
-            list += '<li><a href="' + item.url + '">';
-            list += item.name;
-            list += '</a></li>';
+            debugger;
+            var id = 'list_1_item_'+ i;
+            var checked = "checked";
+           // list += '<li>';
+           // list += '<a href="' + item.DetailPageURL + '">';
+          //  list += '<p>';
+            if(i != 0) {
+                checked = "";
+            }
+            list += '<input type="radio" ' + checked + ' name="radio-choice-1" id='+ id  +' value='+ id  +'  />';
+            list +=  '<label for='+id +' >';
+          //  list += '</p>';
+            list += '<table><tr>';
+            list += '<td><img  src="'+ item.SmallImage.URL +'"></img></td>';
+
+            list += '<td valign="top" style="text-align:top">';
+            list +=  '<h3>' +item.ItemAttributes.Title + '</h3>';
+            list +=  '<p>Brand - ' +item.ItemAttributes.Brand + '</p>';
+
+            list +=  '<p style="color:red">' +item.OfferSummary.LowestNewPrice.FormattedPrice + '</p>';
+            list += '</td>';
+            list += '</tr></table>';
+            list += '</label>';
+
+           // list += '</a>';
+          //  list += '</li>';
         });
-        $('#item1list').append(list).listview("refresh");
+       // $('#item1list').empty();
+       // $('#item1list').append(list).listview('refresh');
+        $('#radio1list').append(list).controlgroup('refresh');
+        $('#radio1list').trigger('create');
     });
 
 })(jQuery);

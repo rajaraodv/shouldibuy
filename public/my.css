@@ -1,3 +1,12 @@
+.card {
+-moz-border-radius: 6px;
+    -webkit-border-radius:6px;
+    border-radius: 6px;
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 5px 6px #ccc;
+}
+
 .text-align-center {
   text-align: center;
 }

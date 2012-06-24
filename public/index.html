@@ -40,40 +40,93 @@
             </ul>
         </div>
     </div>
-    <div data-role="content" style="padding: 15px">
-        <div>
-            <table>
-                <tr>
-                    <label for="item1">
-                        Should I Buy This?
-                    </label>
-                </tr>
-                <tr>
-                    <td width='75%'>
-                        <input id="item1" name='item1' placeholder="Search or enter item1's  url" type="text"/>
-                    </td>
-                    <td width='25%'>
-                        <button type="submit"  id="item1SearchBtn" > Search </button>
-                    </td>
-                </tr>
+    <div data-role="content">
+        <div data-role="collapsible-set">
 
-            </table>
+            <div data-theme="a" data-content-theme="a" data-role="collapsible" data-collapsed="false">
+                <h3>Should I Buy This?</h3>
+
+                <div>
+                    <table>
+                        <tr>
+                            <td width='75%'>
+                                <input id="item1" name='item1' placeholder="Search or enter item1's  url" type="text"/>
+                            </td>
+                            <td width='25%'>
+                                <button type="submit" id="item1SearchBtn"> Search</button>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <div data-role="content">
+                    <div data-role="fieldcontain">
+                        <fieldset id="radio1list" data-role="controlgroup">
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div data-theme="a" data-content-theme="a" data-role="collapsible" data-collapsed="false">
+                <h3>Or, Should I Buy This? (optional)</h3>
+
+                <div>
+                    <table>
+                        <tr>
+                            <td width='75%'>
+                                <input id="item2" name='item1' placeholder="Search or enter item2's  url" type="text"/>
+                            </td>
+                            <td width='25%'>
+                                <button type="submit" id="item2SearchBtn"> Search</button>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <div data-role="content">
+                    <div data-role="fieldcontain">
+                        <fieldset id="radio2list" data-role="controlgroup">
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div data-theme="a" data-content-theme="a" data-role="collapsible" data-collapsed="true">
+                <h3>Or, Should I Buy This? (3rd item)</h3>
+
+                <div>
+                    <table>
+                        <tr>
+                            <td width='75%'>
+                                <input id="item3" name='item1' placeholder="Search or enter item3's  url" type="text"/>
+                            </td>
+                            <td width='25%'>
+                                <button type="submit" id="item3SearchBtn"> Search</button>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <div data-role="content">
+                    <div data-role="fieldcontain">
+                        <fieldset id="radio3list" data-role="controlgroup">
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div data-role="content" style="padding: 15px">
-        <ul id="item1list" data-role="listview"></ul>
-         </div>
         <a data-role="button" data-inline="true" data-transition="fade" href="#page1" data-icon="search"
            data-iconpos="left">
             Go
         </a>
 
         <div data-role="fieldcontain">
-            <fieldset data-role="controlgroup">
-                <label for="textinput2">
-                    Or, Should I Buy This? (optional)
-                </label>
-                <input id="textinput2" placeholder="Search or Enter item2's url" value="" type="text"/>
+            <label for="textinput2">
+                Or, Should I Buy This? (optional)
+            </label>
+            <input id="textinput2" placeholder="Search or Enter item2's url" value="" type="text"/>
             </fieldset>
         </div>
         <a data-role="button" data-transition="fade" href="#page1" data-icon="search" data-iconpos="left">
