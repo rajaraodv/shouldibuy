@@ -1,5 +1,5 @@
 (function ($) {
-    var page1Initialized = false;
+    //var page1Initialized = false;
     var urlPrefix = "";
     if(window.cordova) {
         urlPrefix = "http://localhost:3000";
@@ -40,29 +40,28 @@
         if (tabBar.length) {
             tabBar.tabbar('setActive', '#' + id);
         }
-        if (!page1Initialized && id == "page1") {
-            page1Initialized = true;
+        if (id == "page1") {
             getQuestions();
         }
     });
 
     $("#item1SearchBtn").live('click', function (e) {
-        /*
-         $.ajax({
-         url: urlPrefix + '/search?item1=' + $('#item1').val(),
-         type:'GET',
-         dataType:'json',
-         error:function () {
-         alert("error");
-         },
-         success:function (results) {
-         createList(results, 2, 1);
-         alert(JSON.stringify(results));
-         }
-         });
-         */
 
-        createList(results, 2, 1);
+        $.ajax({
+            url: urlPrefix + '/search?item1=' + $('#item1').val(),
+            type:'GET',
+            dataType:'json',
+            error:function () {
+                alert("error");
+            },
+            success:function (results) {
+                createList(results, 2, 1);
+                //alert(JSON.stringify(results));
+            }
+        });
+
+
+        //  createList(results, 2, 1);
 
     });
 
@@ -86,7 +85,8 @@
 
     });
 
-    function createList(results, pageNumber, listNumber) {
+    function createList(r, pageNumber, listNumber) {
+        results =  r;//save to global variable for now
         var items = results.items;
         var list = "";
         var radioName = "page" + pageNumber + "radio" + listNumber + "listName";
@@ -274,7 +274,7 @@
 
         var user = "user" + (new Date()).getTime() % 100000;
         $.post(urlPrefix + '/addQuestion', questionJson, function (data) {
-            alert(1);
+            alert("Question Added!");
         }, 'json');
     });
 })(jQuery);
